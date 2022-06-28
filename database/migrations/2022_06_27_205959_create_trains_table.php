@@ -15,15 +15,15 @@ class CreateTrainsTable extends Migration
     {
         Schema::create('trains', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('company_name', 15);
             $table->string('departure_station', 100);
             $table->string('arrival_station', 100);
-            $table->dateTime('departure_time', 20 );
-            $table->dateTime('departure_station', 20 );
+            $table->time('departure_time' );
+            $table->time('arrival_time');
             $table->string('train_alphacode', 15);
-            $table->tinyIntege('train_carriage');
-            $table->boolean('in_time');
-            $table->boolean('confirmed');
+            $table->tinyInteger('train_carriage')->unsigned();
+            $table->boolean('in_time')->default(1);
+            $table->boolean('confirmed')->default(1);
             $table->timestamps();
         });
     }
